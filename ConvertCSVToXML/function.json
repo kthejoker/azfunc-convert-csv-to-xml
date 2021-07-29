@@ -1,0 +1,35 @@
+{
+  "scriptFile": "__init__.py",
+  "bindings": [
+    {
+      "authLevel": "anonymous",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods": [
+        "get",
+        "post"
+      ]
+    },
+    {
+      "name": "inputcsv",
+      "direction": "in",
+      "type": "blob",
+      "path": "files/csv/{filename}",
+      "connection": "AzureWebJobsStorage"
+    },
+    {
+      "name": "outputxml",
+      "direction": "out",
+      "type": "blob",
+      "dataType": "string",
+      "path": "files/xml/{outfile}",
+      "connection": "AzureWebJobsStorage"
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "$return"
+    }
+  ]
+}
