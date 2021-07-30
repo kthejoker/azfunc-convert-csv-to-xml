@@ -1,0 +1,59 @@
+{
+    "name": "NYCSchoolSize",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "CityOfNewYorkData",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "DelimitedText",
+        "typeProperties": {
+            "location": {
+                "type": "HttpServerLocation",
+                "relativeUrl": "api/views/7yds-6i8e/rows.csv?accessType=DOWNLOAD"
+            },
+            "columnDelimiter": ",",
+            "escapeChar": "\\",
+            "firstRowAsHeader": true,
+            "quoteChar": "\""
+        },
+        "schema": [
+            {
+                "name": "BOROUGH",
+                "type": "String"
+            },
+            {
+                "name": "GRADE ",
+                "type": "String"
+            },
+            {
+                "name": "PROGRAM TYPE",
+                "type": "String"
+            },
+            {
+                "name": "CORE SUBJECT (MS CORE and 9-12 ONLY)",
+                "type": "String"
+            },
+            {
+                "name": "CORE COURSE (MS CORE and 9-12 ONLY)",
+                "type": "String"
+            },
+            {
+                "name": "SERVICE CATEGORY(K-9* ONLY)",
+                "type": "String"
+            },
+            {
+                "name": "NUMBER OF STUDENTS / SEATS FILLED",
+                "type": "String"
+            },
+            {
+                "name": "NUMBER OF SECTIONS",
+                "type": "String"
+            },
+            {
+                "name": "AVERAGE CLASS SIZE",
+                "type": "String"
+            }
+        ]
+    }
+}
