@@ -1,0 +1,12 @@
+{
+    "name": "CityOfNewYorkData",
+    "properties": {
+        "annotations": [],
+        "type": "HttpServer",
+        "typeProperties": {
+            "url": "https://data.cityofnewyork.us/",
+            "enableServerCertificateValidation": true,
+            "authenticationType": "Anonymous"
+        }
+    }
+}

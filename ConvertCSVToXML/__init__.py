@@ -1,5 +1,4 @@
-import logging
-import csv
+import logging, tempfile, sys, csv
 from io import StringIO, BytesIO
 import azure.functions as func
 
@@ -20,13 +19,20 @@ def main(req: func.HttpRequest, inputcsv: func.InputStream, outputxml: func.Out[
         logging.error("Error opening CSV")
 
     try:
-        f = open("temp.xml", "r+b") # temp file for manipulating CSV
+        temp_file_path = tempfile.gettempdir()
+        fp = tempfile.NamedTemporaryFile(mode="r+b",suffix=".xml")
+       # f = open("temp.xml", "r+b") # temp file for manipulating CSV
+        logging.info(fp.name)
     except:
-        logging.error("Error opening temp file for reading")
+       logging.error("Error opening temp file for reading")
     for row in myfile:
        converted_row = convert_row(row)
-       f.write(bytes(converted_row, 'utf-8'))
-    outputxml.set(f.read())
+       #logging.info('converted_row: %s', converted_row)
+       fp.write(bytes(converted_row, 'utf-8'))
+       #fp.seek(0,2)
+       #logging.info(fp.tell())
+    fp.seek(0,0)
+    outputxml.set(fp.read())
 
     return func.HttpResponse(
        "This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response.",

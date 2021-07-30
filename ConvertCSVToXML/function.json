@@ -22,7 +22,6 @@
       "name": "outputxml",
       "direction": "out",
       "type": "blob",
-      "dataType": "string",
       "path": "files/xml/{outfile}",
       "connection": "AzureWebJobsStorage"
     },
